@@ -1,0 +1,29 @@
+.login-container {
+  height: calc(100vh - 106px);
+  background-color: rgb(240, 231, 231);
+}
+
+.text-input {
+  padding: 5px;
+  width: 250px;
+}
+
+.input-label {
+  font-weight: 600;
+}
+
+.button-login {
+  font-weight: 600;
+}
+
+.error {
+  color: red;
+  font-style: italic;
+  margin-left: 17px;
+}
+
+.success {
+  color: green;
+  font-style: italic;
+  margin-left: 17px;
+}
