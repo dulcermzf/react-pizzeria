@@ -21,8 +21,17 @@ const Navbar = () => {
             navbarScroll
           >
             <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Login</Nav.Link>
-            <Nav.Link href="#action2">Register</Nav.Link>
+            {token ? (
+              <>
+                <Nav.Link href="#action2">Profile</Nav.Link>
+                <Nav.Link href="#action3">Logout</Nav.Link>
+              </>
+            ) : (
+              <>
+                <Nav.Link href="#action4">Login</Nav.Link>
+                <Nav.Link href="#action5">Register</Nav.Link>
+              </>
+            )}
           </Nav>
           <div className="d-flex">
             <Button variant="outline-success">
