@@ -1,0 +1,25 @@
+.cart-container {
+  min-height: calc(100vh - 106px);
+}
+
+.total {
+  font-size: 24px;
+}
+
+.list-item {
+  width: 500px;
+  margin-bottom: 20px;
+}
+
+.item-img {
+  width: 80px;
+  margin-right: 20px;
+}
+
+.item-name {
+  text-transform: capitalize;
+}
+
+.item-price {
+  font-weight: 500;
+}

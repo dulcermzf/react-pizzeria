@@ -8,10 +8,14 @@ const CardPizza = ({ name, price, ingredients, img }) => {
       <Card.Body>
         <Card.Title>Pizza {name}</Card.Title>
         <Card.Text>
-          <span>
-            <b>Ingredientes:</b> {ingredients.join(", ")}
-          </span>
-          <br /> <br />
+          <p>
+            <b>Ingredientes:</b>
+          </p>
+          <ul>
+            {ingredients.map((ingredient) => (
+              <li>{ingredient}</li>
+            ))}
+          </ul>
           <span>
             <b>Precio:</b> ${price.toLocaleString()}
           </span>
