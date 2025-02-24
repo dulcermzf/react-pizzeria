@@ -6,20 +6,22 @@ const CardPizza = ({ name, price, ingredients, img }) => {
     <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src={img} />
       <Card.Body>
-        <Card.Title>Pizza {name}</Card.Title>
-        <Card.Text>
+        <Card.Title>
+          Pizza <span className="capitalize">{name}</span>
+        </Card.Title>
+        <div className="my-3">
           <p>
             <b>Ingredientes:</b>
           </p>
           <ul>
-            {ingredients.map((ingredient) => (
-              <li>{ingredient}</li>
+            {ingredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
             ))}
           </ul>
           <span>
             <b>Precio:</b> ${price.toLocaleString()}
           </span>
-        </Card.Text>
+        </div>
         <div className="split-buttons">
           <Button variant="primary">Ver Más</Button>
           <Button variant="primary">Añadir</Button>

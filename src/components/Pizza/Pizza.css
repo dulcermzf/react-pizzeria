@@ -1,0 +1,7 @@
+.pizza-container {
+  min-height: calc(100vh - 122px);
+}
+
+.pizza-img {
+  width: 350px;
+}
