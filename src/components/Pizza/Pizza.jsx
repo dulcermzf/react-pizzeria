@@ -16,6 +16,8 @@ const Pizza = () => {
     getPizza();
   }, []);
 
+  if (!pizza) return <></>;
+
   return (
     <div className="pizza-container mx-5">
       <h2 className="my-3">
