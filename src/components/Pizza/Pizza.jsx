@@ -9,8 +9,6 @@ const Pizza = () => {
     const res = await fetch("http://localhost:5000/api/pizzas/p001");
     const data = await res.json();
 
-    console.log(data);
-
     setPizza(data);
   };
 
