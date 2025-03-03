@@ -1,5 +1,5 @@
-import Header from "../Header/Header";
-import CardPizza from "../CardPizza/CardPizza";
+import Header from "../../components/Header/Header";
+import CardPizza from "../../components/CardPizza/CardPizza";
 import { useEffect, useState } from "react";
 
 const Home = () => {
@@ -29,6 +29,7 @@ const Home = () => {
                   price={pizza.price}
                   ingredients={pizza.ingredients}
                   img={pizza.img}
+                  id={pizza.id}
                 />
               </div>
             ))}

@@ -1,13 +1,13 @@
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import { Navbar as BNavbar } from "react-bootstrap";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link } from 'react-router-dom'
+import "./Navbar.css"
 
 const Navbar = () => {
-  const total = 25000;
-  const [token, setToken] = useState(false);
+  const total = 19190;
+  const [token, setToken] = useState(true);
 
   return (
     <BNavbar expand="lg" className="bg-body-tertiary">
@@ -20,23 +20,22 @@ const Navbar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
+            <Link to="/" className="nav-link" >Home</Link>
+            
             {token ? (
               <>
-                <Nav.Link href="#action2">Profile</Nav.Link>
-                <Nav.Link href="#action3">Logout</Nav.Link>
+                <Link to="/profile" className="nav-link" >Profile</Link>
+                <button onClick={() => setToken(false)} className="nav-link" >Logout</button>
               </>
             ) : (
               <>
-                <Nav.Link href="#action4">Login</Nav.Link>
-                <Nav.Link href="#action5">Register</Nav.Link>
+                <Link to="/login" className="nav-link" >Login</Link>
+                <Link to="/register" className="nav-link" >Register</Link>
               </>
             )}
           </Nav>
           <div className="d-flex">
-            <Button variant="outline-success">
-              Total: ${total.toLocaleString()}{" "}
-            </Button>
+              <Link className="nav-link button-total" to='/cart'> Total: ${total.toLocaleString()}{" "} </Link>
           </div>
         </BNavbar.Collapse>
       </Container>

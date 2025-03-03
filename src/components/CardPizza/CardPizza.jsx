@@ -1,7 +1,8 @@
 import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./CardPizza.css";
 
-const CardPizza = ({ name, price, ingredients, img }) => {
+const CardPizza = ({ name, price, ingredients, img, id }) => {
   return (
     <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src={img} />
@@ -23,7 +24,7 @@ const CardPizza = ({ name, price, ingredients, img }) => {
           </span>
         </div>
         <div className="split-buttons">
-          <Button variant="primary">Ver Más</Button>
+          <Link className="btn btn-primary" to={'/pizza/' + id} >Ver Más</Link>
           <Button variant="primary">Añadir</Button>
         </div>
       </Card.Body>

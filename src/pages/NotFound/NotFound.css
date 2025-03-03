@@ -1,0 +1,23 @@
+.not-found-container {
+    height: calc(100vh - 106px);
+    background-color: rgb(240, 231, 231);
+}
+
+.image-container {
+    width: 85%;
+    height: 80%;
+    background-image: url(../../assets/NotFound.jpg);
+    background-position: 160% 46%;
+}
+
+.text-container {
+    margin-right: 100px;
+    font-size: 30px;
+    text-align: right;
+    font-weight: bold;
+    color: white;
+}
+
+.underline-text {
+    text-decoration: underline;
+}
