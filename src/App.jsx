@@ -8,10 +8,12 @@ import Cart from "./pages/Cart/Cart";
 import Pizza from "./pages/Pizza/Pizza";
 import Profile from './pages/Profile/Profile';
 import NotFound from './pages/NotFound/NotFound';
+import { CartProvider } from './context/CartContext';
 
 function App() {
   return (
     <BrowserRouter>
+    <CartProvider>
       <Navbar></Navbar>
 
       <Routes>
@@ -25,6 +27,7 @@ function App() {
       </Routes>
       
       <Footer></Footer>
+    </CartProvider>
     </BrowserRouter>
   );
 }

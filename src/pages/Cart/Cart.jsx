@@ -1,50 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { pizzaCart } from "../../assets/pizza";
 import { Button } from "react-bootstrap";
 import "./Cart.css";
+import { CartContext } from "../../context/CartContext";
 
 const Cart = () => {
-  const [cart, setCart] = useState(pizzaCart);
-
-  const total = () => {
-    let sum = 0;
-
-    cart.forEach((item) => (sum += item.count * item.price));
-
-    return sum.toLocaleString();
-  };
-
-  const decrease = (pizza) => {
-    let newCart;
-
-    if (pizza.count > 1) {
-      newCart = cart.map((item) =>
-        item.id === pizza.id
-          ? {
-              ...item,
-              count: item.count - 1,
-            }
-          : item
-      );
-    } else {
-      newCart = cart.filter((item) => item.id !== pizza.id);
-    }
-
-    setCart(newCart);
-  };
-
-  const increase = (pizza) => {
-    setCart(
-      cart.map((item) =>
-        item.id === pizza.id
-          ? {
-              ...item,
-              count: item.count + 1,
-            }
-          : item
-      )
-    );
-  };
+  const { cart, addPizza, removePizza, getTotal } = useContext(CartContext)
+  const total = getTotal()
 
   return (
     <div className="cart-container d-flex justify-content-center align-items-center flex-column">
@@ -64,13 +26,13 @@ const Cart = () => {
                 ${item.price.toLocaleString()}
               </span>
               <div className="count-container">
-                <Button variant="outline-danger" onClick={() => decrease(item)}>
+                <Button variant="outline-danger" onClick={() => removePizza(item)}>
                   -
                 </Button>
                 <span className="mx-3">{item.count}</span>
                 <Button
                   variant="outline-primary"
-                  onClick={() => increase(item)}
+                  onClick={() => addPizza(item)}
                 >
                   +
                 </Button>
@@ -80,7 +42,7 @@ const Cart = () => {
         ))}
       </ul>
       <p className="total">
-        Total: <b>${total()}</b>
+        Total: <b>${total.toLocaleString()}</b>
       </p>
     </div>
   );

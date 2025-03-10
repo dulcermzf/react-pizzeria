@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import { Navbar as BNavbar } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import "./Navbar.css"
+import { CartContext } from "../../context/CartContext";
 
 const Navbar = () => {
-  const total = 19190;
+  const { getTotal } = useContext(CartContext)
+  const total = getTotal();
   const [token, setToken] = useState(true);
 
   return (
