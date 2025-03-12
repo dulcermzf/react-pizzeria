@@ -1,15 +1,16 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import { Navbar as BNavbar } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import "./Navbar.css"
 import { CartContext } from "../../context/CartContext";
+import { UserContext } from "../../context/UserContext";
 
 const Navbar = () => {
   const { getTotal } = useContext(CartContext)
+  const { token, logout } = useContext(UserContext)
   const total = getTotal();
-  const [token, setToken] = useState(true);
 
   return (
     <BNavbar expand="lg" className="bg-body-tertiary">
@@ -27,7 +28,7 @@ const Navbar = () => {
             {token ? (
               <>
                 <Link to="/profile" className="nav-link" >Profile</Link>
-                <button onClick={() => setToken(false)} className="nav-link" >Logout</button>
+                <button onClick={() => logout()} className="nav-link" >Logout</button>
               </>
             ) : (
               <>

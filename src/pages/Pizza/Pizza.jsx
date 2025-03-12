@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import "./Pizza.css";
+import { useParams } from "react-router-dom";
 
 const Pizza = () => {
   const [pizza, setPizza] = useState();
+  const { id } = useParams()
 
   const getPizza = async () => {
-    const res = await fetch("http://localhost:5000/api/pizzas/p001");
+    const res = await fetch(`http://localhost:5000/api/pizzas/${id}`);
     const data = await res.json();
 
     setPizza(data);

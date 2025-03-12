@@ -3,9 +3,11 @@ import { pizzaCart } from "../../assets/pizza";
 import { Button } from "react-bootstrap";
 import "./Cart.css";
 import { CartContext } from "../../context/CartContext";
+import { UserContext } from "../../context/UserContext";
 
 const Cart = () => {
   const { cart, addPizza, removePizza, getTotal } = useContext(CartContext)
+  const { token } = useContext(UserContext)
   const total = getTotal()
 
   return (
@@ -44,6 +46,13 @@ const Cart = () => {
       <p className="total">
         Total: <b>${total.toLocaleString()}</b>
       </p>
+      <Button
+        variant="primary"
+        disabled={!token}
+        onClick={() => { console.log('buy') }}
+      >
+        Comprar
+      </Button>
     </div>
   );
 };
