@@ -1,6 +1,7 @@
 import { Button } from "react-bootstrap";
 import "./Login.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../../context/UserContext";
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -13,6 +14,8 @@ const Login = () => {
     message: "",
   });
 
+  const { login } = useContext(UserContext)
+
   const handleChange = (event) => {
     const target = event.target;
 
@@ -23,7 +26,7 @@ const Login = () => {
     setMessage({ status, message });
   };
 
-  const validateForm = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
 
     const { email, password } = form;
@@ -38,13 +41,15 @@ const Login = () => {
       return;
     }
 
+    const logedin = login(email, password)
+
     setStatusMessage("success", "Succesfully Logged In");
   };
 
   return (
     <div className="d-flex flex-column justify-content-center align-items-center login-container">
       <h2>Login</h2>
-      <form onSubmit={validateForm}>
+      <form onSubmit={onSubmit}>
         <div className="d-flex flex-column justify-content-center m-3">
           <label className="input-label" htmlFor="email">
             Email*

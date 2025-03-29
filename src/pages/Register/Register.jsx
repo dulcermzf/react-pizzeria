@@ -1,6 +1,7 @@
 import { Button } from "react-bootstrap";
 import "./Register.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../../context/UserContext";
 
 const Register = () => {
   const [form, setForm] = useState({
@@ -14,6 +15,8 @@ const Register = () => {
     message: "",
   });
 
+  const { register } = useContext(UserContext)
+
   const handleChange = (event) => {
     const target = event.target;
 
@@ -24,7 +27,7 @@ const Register = () => {
     setMessage({ status, message });
   };
 
-  const validateForm = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
 
     const { email, password, confirmPassword } = form;
@@ -44,13 +47,14 @@ const Register = () => {
       return;
     }
 
+    const registered = await register(email, password)
     setStatusMessage("success", "Succesfully registered");
   };
 
   return (
     <div className="d-flex flex-column justify-content-center align-items-center register-container">
       <h2>Register</h2>
-      <form onSubmit={validateForm}>
+      <form onSubmit={onSubmit}>
         <div className="d-flex flex-column justify-content-center m-3">
           <label className="input-label" htmlFor="email">
             Email*

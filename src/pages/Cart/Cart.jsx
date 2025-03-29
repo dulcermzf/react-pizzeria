@@ -8,7 +8,20 @@ import { UserContext } from "../../context/UserContext";
 const Cart = () => {
   const { cart, addPizza, removePizza, getTotal } = useContext(CartContext)
   const { token } = useContext(UserContext)
+  const [ message, setMessage ] = useState('')
   const total = getTotal()
+
+  const buy = async () => {
+    try {
+      const { data } = await fetch('http://localhost:5000/api/checkouts', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+
+      setMessage(data.message)
+  } catch (error) {
+      setMessage('Error on buy')
+  }
+  }
 
   return (
     <div className="cart-container d-flex justify-content-center align-items-center flex-column">
@@ -49,10 +62,11 @@ const Cart = () => {
       <Button
         variant="primary"
         disabled={!token}
-        onClick={() => { console.log('buy') }}
+        onClick={() => buy() }
       >
         Comprar
       </Button>
+      <p>{message}</p>
     </div>
   );
 };
